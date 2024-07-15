@@ -1,8 +1,9 @@
+package Model;
 
 import java.util.Objects;
 
 /**
- * This class defines a Character object. Objects of this class represent one row of a database table. The table
+ * This class defines a Model.Character object. Objects of this class represent one row of a database table. The table
  * should be defined as follows to be compatible with these objects:
  *
  * CREATE TABLE character (
@@ -70,7 +71,7 @@ public class Character {
 
     @Override
     public String toString() {
-        return "Character{" +
+        return "Model.Character{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

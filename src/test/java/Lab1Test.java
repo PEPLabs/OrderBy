@@ -1,21 +1,21 @@
 
+import Model.Character;
 import Util.ConnectionUtil;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
+import Util.FileUtil;
+
 import static org.junit.Assert.fail;
 
-public class OrderResultSetTest {
-    private final OrderResultSetActivity orderResultSetActivity = new OrderResultSetActivity();
-    private Connection conn;
+public class Lab1Test {
+        private Connection conn;
 
     @Test
     public void problem1AlphabeticalOrder() {
@@ -28,8 +28,21 @@ public class OrderResultSetTest {
             expectedList.add(new Character(2, "Vladimir", "Harkonnen"));
 
 
-            List<Character> resultList = orderResultSetActivity.problem1();
-
+            String sql = FileUtil.parseSQLFile("src/main/lab1.sql");
+            if(sql.isBlank()){
+                Assert.fail("No SQL statement exists in lab1.sql.");
+            }
+            List<Character> resultList = new LinkedList<>();
+            try {
+                Connection connection = ConnectionUtil.getConnection();
+                Statement s = connection.createStatement();
+                ResultSet rs =s.executeQuery(sql);
+                while(rs.next()) {
+                    resultList.add(new Character(rs.getInt(1), rs.getString(2), rs.getString(3)));
+                }
+            } catch (SQLException e) {
+                System.out.println("problem1: " + e.getMessage() + '\n');
+            }
             Assert.assertEquals(expectedList, resultList);
         }catch(Exception e) {
             System.out.println("problem1: " + e.getMessage() + '\n');
