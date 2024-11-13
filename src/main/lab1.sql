@@ -20,4 +20,3 @@
 -- TODO: Create a select statement that will order all records from the Character
 --  table using the last_name in ascending order, with first_name as a tiebreaker.
 --  The sort should be alphabetical, starting with 'A'.
-select * from character order by last_name, first_name asc

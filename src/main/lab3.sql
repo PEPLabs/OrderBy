@@ -12,4 +12,3 @@
 --      |5   |'Feyd-Rautha' |'Harkonnen'  |
 -- TODO: Create a SQL statement that will retrieve only the second-to-last first name,
 --  when sorted alphabetically.
-select * from character order by first_name desc limit 1 offset 1

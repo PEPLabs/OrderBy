@@ -12,4 +12,3 @@
 --      |5   |'Feyd-Rautha' |'Harkonnen'  |
 -- TODO: Create a select statement that will retrieve the first 3 first_names, sorted
 --      alphabetically, starting with A.
-select * from character order by first_name asc limit 3

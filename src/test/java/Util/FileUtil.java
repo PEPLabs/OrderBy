@@ -10,7 +10,7 @@ public class FileUtil {
         StringBuilder sql = new StringBuilder();
         try {
             //the file to be opened for reading
-            FileInputStream fis = new FileInputStream("./" + fileName);
+            FileInputStream fis = new FileInputStream("./"+fileName);
 
             //file to be scanned
             Scanner sc = new Scanner(fis);
